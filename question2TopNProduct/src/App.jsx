@@ -9,7 +9,7 @@ function App() {
     <Router>
       <div className="container mx-auto p-4">
         <Routes>
-          <Route path="/" element={<ProductList company="AMZ" category="Laptop" top={10} minPrice={1} maxPrice={10000} />} />
+          <Route path="/" element={<AllProducts company="AMZ" category="Laptop" top={10} minPrice={1} maxPrice={10000} />} />
           <Route path="/product/:productId" element={<ProductDetails />} />
         </Routes>
       </div>

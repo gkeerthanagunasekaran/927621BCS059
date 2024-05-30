@@ -1,16 +1,24 @@
 import React from 'react'
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { getProducts } from '../api';
 
 const AllProducts = ({ company, category, top, minPrice, maxPrice }) => {
     const [products, setProducts] = useState([]);
+    const [filter, setFilter] = useState({ category, minPrice, maxPrice });
+    const [sort, setSort] = useState('price');
 
 
 
     useEffect(() => {
         const fetchProducts = async () => {
+            try{
           const data = await getProducts(company, category, top, minPrice, maxPrice);
           setProducts(data);
-        };
+        } catch(error){
+            console.error('Error fetching products:', error);
+        }
+    }
         fetchProducts();
       }, [company, category, top, minPrice, maxPrice]);
     
